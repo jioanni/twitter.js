@@ -1,3 +1,5 @@
+const routes = require('./routes');
+const twitterBank = require('./twitterBank');
 const express = require("express");
 const app = express();
 const volleyball = require("volleyball");
@@ -9,8 +11,9 @@ const locals = {
   ]
 };
 
+app.use('/', routes);
 app.use(volleyball);
-
+app.use(express.static('public'));
 app.listen(3000, function() {
   console.log('Listening on 3000.');
 });
@@ -23,5 +26,5 @@ app.listen(3000, function() {
 
   app.get('/:uri', (req, res) => {
     res.render( 'index', {title: 'Hall of Fame', people: people} );
-    
+
   });
