@@ -20,11 +20,10 @@ const locals = {
   const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
   app.use(volleyball);
   app.listen(3000, function() {
-    console.log("Listening on 3000.")
-  })
+    console.log('Listening on 3000.');
+  });
 
   app.get('/:uri', (req, res) => {
     res.render( 'index', {title: 'Hall of Fame', people: people} );
     //res.render(console.log(req.method + " / " +req.params.uri));
-
-})
+  });
