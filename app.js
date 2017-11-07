@@ -1,15 +1,17 @@
 const routes = require('./routes');
 const twitterBank = require('./twitterBank');
 const express = require("express");
+const bodyParser = require("body-parser")
 const app = express();
 const volleyball = require("volleyball");
 const nunjucks = require("nunjucks");
-const locals = {
-  title: 'An Example',
-  people: [
-  {name: 'Gandalf'}, {name: 'Frodo'}, {name: 'Hermione'}
-  ]
-};
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
 
 app.use('/', routes);
 app.use(volleyball);
